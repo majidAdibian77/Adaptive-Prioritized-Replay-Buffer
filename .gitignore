@@ -1,0 +1,27 @@
+# Mac/OSX
+.DS_Store
+
+*__pycache__/
+*.py[cod]
+*$py.class
+.Python
+
+.vscode
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+
+.pre-commit-config
+setup.cfg
+pyproject.toml
+
+trash/
+checkpoints/
+logs/
+runs/
+recordings/
+screenshots/
+references/
+plots/evaluations/
+unit_tests/
