@@ -119,10 +119,12 @@ def main():
                 # ("PER-DQN-reward-alpha0.6", ""), ("PER-DQN-Pi-proportional-alpha0.6", ""), ("PER-DQN-Pi-softmax-alpha0.6", ""), ("PER-DQN-counter-alpha0.6", ""),
                 
                 ("PER-DQN-alpha0.6", ""), ("PER-DQN-alpha0.1", ""),
-                # ("PER-DQN-exponent-reward", ""), ("PER-DQN-reward-alpha0.6", ""), ("PER-DQN-exponent-reward-proj-TDerror", ""),
-                # ("PER-DQN-exponent-Pi-proportional", ""), ("PER-DQN-exponent-Pi-proportional-proj-TDerror", ""), ("PER-DQN-Pi-proportional-alpha0.6", ""),
-                # ("PER-DQN-exponent-Pi-softmax", ""), ("PER-DQN-exponent-Pi-softmax-proj-TDerror", ""), ("PER-DQN-Pi-softmax-alpha0.6", ""),
-                ("PER-DQN-exponent-counter", ""), ("PER-DQN-exponent-counter-proj-TDerror", ""), ("PER-DQN-counter-alpha0.6", "")
+                # ("PER-DQN-exponent-reward", ""), ("PER-DQN-reward-alpha0.6", ""), ("PER-DQN-exponent-reward-proj-TDerror", ""), ("PER-DQN-exponent-reward-projected", ""),
+                # ("PER-DQN-exponent-Pi-proportional", ""), ("PER-DQN-exponent-Pi-proportional-proj-TDerror", ""), ("PER-DQN-Pi-proportional-alpha0.6", ""),("PER-DQN-exponent-Pi-proportional-projected", ""),
+                # ("PER-DQN-exponent-Pi-softmax", ""), ("PER-DQN-exponent-Pi-softmax-proj-TDerror", ""), ("PER-DQN-Pi-softmax-alpha0.6", ""), ("PER-DQN-exponent-Pi-softmax-projected", ""),
+                ("PER-DQN-exponent-counter", ""), ("PER-DQN-exponent-counter-proj-TDerror", ""), ("PER-DQN-counter-alpha0.6", ""), ("PER-DQN-exponent-counter-projected", ""),
+
+                # ("PER-DQN-exponent-counter-projected", ""), ("PER-DQN-exponent-reward-projected", ""), ("PER-DQN-exponent-Pi-softmax-projected", ""), ("PER-DQN-exponent-Pi-proportional-projected", "")
                 ]
 
     plot_evaluation_return(main_path, run_names, env_name)
