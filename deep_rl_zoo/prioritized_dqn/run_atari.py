@@ -45,21 +45,21 @@ python3 -m deep_rl_zoo.prioritized_dqn.run_atari --run_name "adaptive_alpha" --e
                 --num_eval_episods 5 --save_ckpt_iter 100 --max_episode_steps 10000 \
                 --priority_exponent_begin_value 0.6  --priority_exponent_end_value 0.1
 
-python3 -m deep_rl_zoo.prioritized_dqn.run_atari --run_name "exponent-reward-bounded" --environment_name=Seaquest --replay_capacity 100000 \
+python3 -m deep_rl_zoo.prioritized_dqn.run_atari --run_name "exponent-reward-proj-TDerror" --environment_name=Seaquest --replay_capacity 100000 \
                 --min_replay_size 10000 --exploration_epsilon_decay_step 10000000 --exploration_epsilon_begin_value 1 \
                 --exploration_epsilon_end_value 0.0001 --num_iterations 501 --num_train_steps 20000 --eval_exploration_epsilon 0 \
                 --num_eval_episods 5 --save_ckpt_iter 100 --max_episode_steps 10000 \
                 --use_fixed_priority_exponent  --fixed_priority_exponent 1 \
                 --use_reward_in_priortized_replay
 
-python3 -m deep_rl_zoo.prioritized_dqn.run_atari --run_name "exponent-counter-bounded" --environment_name=Seaquest --replay_capacity 100000 \
+python3 -m deep_rl_zoo.prioritized_dqn.run_atari --run_name "exponent-counter-proj-TDerror" --environment_name=Seaquest --replay_capacity 100000 \
                 --min_replay_size 10000 --exploration_epsilon_decay_step 10000000 --exploration_epsilon_begin_value 1 \
                 --exploration_epsilon_end_value 0.0001 --num_iterations 501 --num_train_steps 20000 --eval_exploration_epsilon 0 \
                 --num_eval_episods 5 --save_ckpt_iter 100 --max_episode_steps 10000 \
                 --use_fixed_priority_exponent  --fixed_priority_exponent 1 \
                 --use_replay_counter
                 
-python3 -m deep_rl_zoo.prioritized_dqn.run_atari --run_name "exponent-Pi-softmax-projected" --environment_name=Seaquest --replay_capacity 100000 \
+python3 -m deep_rl_zoo.prioritized_dqn.run_atari --run_name "exponent-Pi-softmax" --environment_name=Seaquest --replay_capacity 100000 \
                 --min_replay_size 10000 --exploration_epsilon_decay_step 10000000 --exploration_epsilon_begin_value 1 \
                 --exploration_epsilon_end_value 0.0001 --num_iterations 501 --num_train_steps 20000 --eval_exploration_epsilon 0 \
                 --num_eval_episods 5 --save_ckpt_iter 100 --max_episode_steps 10000 \
@@ -120,7 +120,7 @@ flags.DEFINE_string('results_csv_path', './logs/per_dqn_atari_results.csv', 'Pat
 flags.DEFINE_string('checkpoint_dir', './checkpoints', 'Path for checkpoint directory.')
 
 flags.DEFINE_integer('save_ckpt_iter', 1, 'save checkpint evry n iterations')
-flags.DEFINE_string('device', 'cuda:0', 'device to run train model: cpu or cuda')
+flags.DEFINE_string('device', 'cuda:1', 'device to run train model: cpu or cuda')
 flags.DEFINE_integer('num_eval_episods', 5, 'Number of episods in evaluation env to run per iteration.')
 # flags.DEFINE_integer('max_eval_episod_steps', int(1e3), 'max_eval_episod_steps')
 flags.DEFINE_string('run_name', 'v1', 'name of current run')
@@ -235,7 +235,7 @@ def main(argv):
         random_state=random_state,
         encoder=encoder,
         decoder=decoder,
-        use_reward_in_priortized_replay=FLAGS.use_replay_counter,
+        use_reward_in_priortized_replay=FLAGS.use_reward_in_priortized_replay,
         use_counter=FLAGS.use_replay_counter,
         use_Pi_in_priortize_replay=FLAGS.use_Pi_in_priortize_replay,
     )
