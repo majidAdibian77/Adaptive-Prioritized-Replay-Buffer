@@ -45,14 +45,14 @@ python3 -m deep_rl_zoo.prioritized_dqn.run_atari --run_name "adaptive_alpha" --e
                 --num_eval_episods 5 --save_ckpt_iter 100 --max_episode_steps 10000 \
                 --priority_exponent_begin_value 0.6  --priority_exponent_end_value 0.1
 
-python3 -m deep_rl_zoo.prioritized_dqn.run_atari --run_name "exponent-reward-projected" --environment_name=Seaquest --replay_capacity 100000 \
+python3 -m deep_rl_zoo.prioritized_dqn.run_atari --run_name "exponent-reward-bounded" --environment_name=Seaquest --replay_capacity 100000 \
                 --min_replay_size 10000 --exploration_epsilon_decay_step 10000000 --exploration_epsilon_begin_value 1 \
                 --exploration_epsilon_end_value 0.0001 --num_iterations 501 --num_train_steps 20000 --eval_exploration_epsilon 0 \
                 --num_eval_episods 5 --save_ckpt_iter 100 --max_episode_steps 10000 \
                 --use_fixed_priority_exponent  --fixed_priority_exponent 1 \
                 --use_reward_in_priortized_replay
 
-python3 -m deep_rl_zoo.prioritized_dqn.run_atari --run_name "exponent-counter-projected" --environment_name=Seaquest --replay_capacity 100000 \
+python3 -m deep_rl_zoo.prioritized_dqn.run_atari --run_name "exponent-counter-bounded" --environment_name=Seaquest --replay_capacity 100000 \
                 --min_replay_size 10000 --exploration_epsilon_decay_step 10000000 --exploration_epsilon_begin_value 1 \
                 --exploration_epsilon_end_value 0.0001 --num_iterations 501 --num_train_steps 20000 --eval_exploration_epsilon 0 \
                 --num_eval_episods 5 --save_ckpt_iter 100 --max_episode_steps 10000 \

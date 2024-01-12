@@ -27,6 +27,6 @@ numpy==1.24.3
 opencv-python==4.8.0.74
 python-snappy==0.6.1
 
-# Coding styles and others
+# # Coding styles and others
 pre-commit==3.3.2
 black==23.7.0
