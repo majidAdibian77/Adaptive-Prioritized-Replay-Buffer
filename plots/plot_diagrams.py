@@ -72,7 +72,7 @@ def plot_evaluation_return(main_path, run_names, env_name):
     steps_to_show = 10000001
     plt.xticks(np.arange(0, data["train_steps"][-1], step=steps_to_show), labels=[str(i//steps_to_show) for i in np.arange(0, data["train_steps"][-1], step=steps_to_show)])
     plt.legend()
-    plt.savefig(os.path.join(main_path, env_name, "evaluation_returns2.png"))
+    plt.savefig(os.path.join(main_path, env_name, "evaluation_returns.png"))
     plt.close()
 
 
@@ -107,7 +107,7 @@ def plot_train_returns(main_path, run_names, env_name):
 def main():
 
     main_path = ""
-    env_name = "evaluations"
+    env_name = "evaluations/Pi-softmax"
     run_names = [
                 # ("DQN", ""), ("PER-DQN-alpha0.1", ""), ("PER-DQN-alpha0.35", ""), ("PER-DQN-alpha0.6", ""), ("PER-DQN-alpha0.85", ""), \
                 # ("PER-DQN-adaptive-alpha-0.6to0.1", ""), ("PER-DQN-adaptive-alpha-0.1to0.6", ""), ("PER-DQN-alpha0.6", ""), \
@@ -119,12 +119,10 @@ def main():
                 # ("PER-DQN-reward-alpha0.6", ""), ("PER-DQN-Pi-proportional-alpha0.6", ""), ("PER-DQN-Pi-softmax-alpha0.6", ""), ("PER-DQN-counter-alpha0.6", ""),
                 
                 ("PER-DQN-alpha0.6", ""), ("PER-DQN-alpha0.1", ""),
-                # ("PER-DQN-exponent-reward", ""), ("PER-DQN-reward-alpha0.6", ""), ("PER-DQN-exponent-reward-proj-TDerror", ""), ("PER-DQN-exponent-reward-projected", ""),
+                # ("PER-DQN-exponent-counter", ""), ("PER-DQN-exponent-counter-proj-TDerror", ""), ("PER-DQN-exponent-counter-new-func", ""),
+                # ("PER-DQN-exponent-reward", ""), ("PER-DQN-exponent-reward-proj-TDerror", ""), ("PER-DQN-exponent-reward-new-func", ""),
                 # ("PER-DQN-exponent-Pi-proportional", ""), ("PER-DQN-exponent-Pi-proportional-proj-TDerror", ""), ("PER-DQN-Pi-proportional-alpha0.6", ""),("PER-DQN-exponent-Pi-proportional-projected", ""),
-                # ("PER-DQN-exponent-Pi-softmax", ""), ("PER-DQN-exponent-Pi-softmax-proj-TDerror", ""), ("PER-DQN-Pi-softmax-alpha0.6", ""), ("PER-DQN-exponent-Pi-softmax-projected", ""),
-                ("PER-DQN-exponent-counter", ""), ("PER-DQN-exponent-counter-proj-TDerror", ""), ("PER-DQN-counter-alpha0.6", ""), ("PER-DQN-exponent-counter-projected", ""),
-
-                # ("PER-DQN-exponent-counter-projected", ""), ("PER-DQN-exponent-reward-projected", ""), ("PER-DQN-exponent-Pi-softmax-projected", ""), ("PER-DQN-exponent-Pi-proportional-projected", "")
+                ("PER-DQN-exponent-Pi-softmax", ""), ("PER-DQN-exponent-Pi-softmax-proj-TDerror", ""), ("PER-DQN-Pi-softmax-alpha0.6", ""), ("PER-DQN-exponent-Pi-softmax-projected", ""),
                 ]
 
     plot_evaluation_return(main_path, run_names, env_name)

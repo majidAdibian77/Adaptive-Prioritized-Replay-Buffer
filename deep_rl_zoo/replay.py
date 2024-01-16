@@ -238,8 +238,8 @@ class PrioritizedReplay:
             self.reward_range[0] = transitions.r_t.mean()*new_prob + self.reward_range[0]*old_prob  # update mean rewards
             self.reward_range[1] = transitions.r_t.std()*new_prob + self.reward_range[1]*old_prob # update std rewards
             lower_band, upper_band = self.reward_range[0]-2*self.reward_range[1], self.reward_range[0]+2*self.reward_range[1]
-            # normalized_reward = (transitions.r_t.clip(lower_band, upper_band)-lower_band)/(upper_band-lower_band)
-            normalized_reward = (transitions.r_t.clip(lower_band, upper_band)-lower_band +0.1*self.reward_range[1])/(upper_band-lower_band +self.reward_range[1])
+            normalized_reward = (transitions.r_t.clip(lower_band, upper_band)-lower_band)/(upper_band-lower_band)
+            # normalized_reward = (transitions.r_t.clip(lower_band, upper_band)-lower_band +0.1*self.reward_range[1])/(upper_band-lower_band +self.reward_range[1])
             # normalized_reward = self.project_to_new_band(normalized_reward, 0.1, 0.9)
             exponent.append(normalized_reward)
         
@@ -247,8 +247,8 @@ class PrioritizedReplay:
         if self.use_counter:
             self._transition_counter[indices] += 1
             counters = self._transition_counter[indices]
-            # counter_prob = 1/(1+np.exp(counters-4))
-            counter_prob = 1/(1+np.exp(counters-5) + 0.4) + 0.1
+            counter_prob = 1/(1+np.exp(counters-4))
+            # counter_prob = 1/(1+np.exp(counters-5) + 0.4) + 0.1
             # counter_prob = self.project_to_new_band(counter_prob)
             exponent.append(counter_prob)
 

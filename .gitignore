@@ -17,9 +17,12 @@ setup.cfg
 pyproject.toml
 
 trash/
-checkpoints/
-logs/
-runs/
+checkpoints/*
+!checkpoints/final_checkpoints
+logs/*
+!logs/final_logs
+runs/*
+!runs/final_runs
 recordings/
 screenshots/
 references/
