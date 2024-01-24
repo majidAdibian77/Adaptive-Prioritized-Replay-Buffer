@@ -34,10 +34,10 @@ from deep_rl_zoo import greedy_actors
 from deep_rl_zoo import replay as replay_lib
 
 """
-python3 -m deep_rl_zoo.dqn.run_atari --run_name "original" --environment_name Seaquest --replay_capacity 100000 \
+python3 -m deep_rl_zoo.dqn.run_atari --run_name "original" --environment_name AirRaid --replay_capacity 100000 \
                 --min_replay_size 10000 --exploration_epsilon_decay_step 10000000 --exploration_epsilon_begin_value 1 \
                 --exploration_epsilon_end_value 0.0001 --num_iterations 501 --num_train_steps 20000 --eval_exploration_epsilon 0 \
-                --num_eval_episods 5 --save_ckpt_iter 50 --max_episode_steps 10000
+                --num_eval_episods 5 --save_ckpt_iter 100 --max_episode_steps 10000
 """
 
 FLAGS = flags.FLAGS
@@ -206,7 +206,7 @@ def main(argv):
     )
 
     # Setup checkpoint.
-    checkpoint = PyTorchCheckpoint(environment_name=FLAGS.environment_name, agent_name=f'PER-DQN-{FLAGS.run_name}-{FLAGS.environment_name}', save_dir=FLAGS.checkpoint_dir)
+    checkpoint = PyTorchCheckpoint(environment_name=FLAGS.environment_name, agent_name=f'DQN-{FLAGS.run_name}-{FLAGS.environment_name}', save_dir=FLAGS.checkpoint_dir)
     checkpoint.register_pair(('network', network))
 
     # Run the training and evaluation for N iterations.

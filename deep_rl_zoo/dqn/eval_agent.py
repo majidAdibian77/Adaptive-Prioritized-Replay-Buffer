@@ -28,9 +28,9 @@ from deep_rl_zoo import gym_env
 from deep_rl_zoo import greedy_actors
 
 """
-python3 -m deep_rl_zoo.prioritized_dqn_v1.eval_agent --environment_name=Seaquest --run_name original_alpha0.1 \
-    --load_checkpoint_file=checkpoints/ \
-    --num_eval_steps 1000
+python3 -m deep_rl_zoo.dqn.eval_agent --environment_name=Tennis --run_name DQN-orignal \
+    --load_checkpoint_file=checkpoints/final_checkpoints/Tennis/PER-DQN-orignal_alpha0.6-Tennis_Tennis_500.ckpt \
+    --num_eval_steps 1000 --num_iterations 5
 """
 
 FLAGS = flags.FLAGS

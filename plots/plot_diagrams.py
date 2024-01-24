@@ -43,9 +43,9 @@ def get_evaluation_return_data(main_path, run_name, env_name):
         mean_returns.append(mean)
         std_returns.append(std)
     mean_returns, std_returns = np.array(mean_returns), np.array(std_returns)
-    lower_band = smooth(mean_returns-std_returns, 10)
-    upper_band = smooth(mean_returns+std_returns, 10)
-    mean_returns = smooth(mean_returns, 10)
+    lower_band = smooth(mean_returns-std_returns, 20)
+    upper_band = smooth(mean_returns+std_returns, 20)
+    mean_returns = smooth(mean_returns, 20)
     train_steps = np.array(list(eval_returns.keys()))[:len(mean_returns)]
     return {"train_steps": train_steps, "mean_returns": mean_returns, "lower_band": lower_band, "upper_band": upper_band, \
             "title": run_name}
@@ -98,7 +98,7 @@ def plot_train_returns(main_path, run_names, env_name):
     plt.xlabel("Train Step (K steps)")
     plt.ylabel("Episode Return")
     plt.title(env_name)
-    steps_to_show = 500000
+    steps_to_show = 10000001
     plt.xticks(np.arange(0, data["train_steps"][-1], step=steps_to_show), labels=[str(i//steps_to_show) for i in np.arange(0, data["train_steps"][-1], step=steps_to_show)])
     plt.legend()
     plt.savefig(os.path.join(main_path, env_name, "train_returns.png"))
@@ -106,23 +106,13 @@ def plot_train_returns(main_path, run_names, env_name):
 
 def main():
 
-    main_path = ""
-    env_name = "evaluations/Pi-softmax"
+    main_path = "final_plots"
+    # env_name = "Seaquest"
+    # env_name = "Breakout"
+    env_name = "Tennis"
     run_names = [
-                # ("DQN", ""), ("PER-DQN-alpha0.1", ""), ("PER-DQN-alpha0.35", ""), ("PER-DQN-alpha0.6", ""), ("PER-DQN-alpha0.85", ""), \
-                # ("PER-DQN-adaptive-alpha-0.6to0.1", ""), ("PER-DQN-adaptive-alpha-0.1to0.6", ""), ("PER-DQN-alpha0.6", ""), \
-                # ("PER-DQN-reward-alpha0.6", ""), ("PER-DQN-Pi-proportional-alpha0.6", ""), ("PER-DQN-Pi-softmax-alpha0.6", ""), ("PER-DQN-counter-alpha0.6", "")
-                
-                # ("PER-DQN-alpha0.6", ""), ("PER-DQN-alpha0.1", ""), ("PER-DQN-adaptive-alpha-0.6to0.1", ""),
-                # ("PER-DQN-exponent-reward", ""), ("PER-DQN-exponent-Pi-proportional", ""), ("PER-DQN-exponent-Pi-softmax", ""), ("PER-DQN-exponent-counter", ""),
-                # ("PER-DQN-exponent-reward-proj-TDerror", ""), ("PER-DQN-exponent-Pi-proportional-proj-TDerror", ""), ("PER-DQN-exponent-Pi-softmax-proj-TDerror", ""), ("PER-DQN-exponent-counter-proj-TDerror", ""),
-                # ("PER-DQN-reward-alpha0.6", ""), ("PER-DQN-Pi-proportional-alpha0.6", ""), ("PER-DQN-Pi-softmax-alpha0.6", ""), ("PER-DQN-counter-alpha0.6", ""),
-                
-                ("PER-DQN-alpha0.6", ""), ("PER-DQN-alpha0.1", ""),
-                # ("PER-DQN-exponent-counter", ""), ("PER-DQN-exponent-counter-proj-TDerror", ""), ("PER-DQN-exponent-counter-new-func", ""),
-                # ("PER-DQN-exponent-reward", ""), ("PER-DQN-exponent-reward-proj-TDerror", ""), ("PER-DQN-exponent-reward-new-func", ""),
-                # ("PER-DQN-exponent-Pi-proportional", ""), ("PER-DQN-exponent-Pi-proportional-proj-TDerror", ""), ("PER-DQN-Pi-proportional-alpha0.6", ""),("PER-DQN-exponent-Pi-proportional-projected", ""),
-                ("PER-DQN-exponent-Pi-softmax", ""), ("PER-DQN-exponent-Pi-softmax-proj-TDerror", ""), ("PER-DQN-Pi-softmax-alpha0.6", ""), ("PER-DQN-exponent-Pi-softmax-projected", ""),
+                ("DQN", ""), ("PER-DQN-alpha0.6", ""),
+                ("PER-DQN-exponent-counter", ""), ("PER-DQN-exponent-reward", ""), ("PER-DQN-exponent-Pi-proportional", ""), ("PER-DQN-exponent-Pi-softmax", "")
                 ]
 
     plot_evaluation_return(main_path, run_names, env_name)
