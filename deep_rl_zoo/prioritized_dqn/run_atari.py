@@ -33,33 +33,33 @@ from deep_rl_zoo import greedy_actors
 from deep_rl_zoo import replay as replay_lib
 
 """
-python3 -m deep_rl_zoo.prioritized_dqn.run_atari --run_name "orignal_alpha0.6" --environment_name=Seaquest --replay_capacity 100000 \
+python3 -m deep_rl_zoo.prioritized_dqn.run_atari --run_name "orignal_alpha0.6" --environment_name=Qbert --replay_capacity 100000 \
                 --min_replay_size 10000 --exploration_epsilon_decay_step 10000000 --exploration_epsilon_begin_value 1 \
                 --exploration_epsilon_end_value 0.0001 --num_iterations 501 --num_train_steps 20000 --eval_exploration_epsilon 0 \
                 --num_eval_episods 5 --save_ckpt_iter 100 --max_episode_steps 10000 \
                 --use_fixed_priority_exponent  --fixed_priority_exponent 0.6
 
-python3 -m deep_rl_zoo.prioritized_dqn.run_atari --run_name "adaptive_alpha" --environment_name=Seaquest --replay_capacity 100000 \
+python3 -m deep_rl_zoo.prioritized_dqn.run_atari --run_name "adaptive_alpha" --environment_name=Qbert --replay_capacity 100000 \
                 --min_replay_size 10000 --exploration_epsilon_decay_step 10000000 --exploration_epsilon_begin_value 1 \
                 --exploration_epsilon_end_value 0.0001 --num_iterations 501 --num_train_steps 20000 --eval_exploration_epsilon 0 \
                 --num_eval_episods 5 --save_ckpt_iter 100 --max_episode_steps 10000 \
                 --priority_exponent_begin_value 0.6  --priority_exponent_end_value 0.1
 
-python3 -m deep_rl_zoo.prioritized_dqn.run_atari --run_name "reward" --environment_name=Seaquest --replay_capacity 100000 \
+python3 -m deep_rl_zoo.prioritized_dqn.run_atari --run_name "reward" --environment_name=Qbert --replay_capacity 100000 \
                 --min_replay_size 10000 --exploration_epsilon_decay_step 10000000 --exploration_epsilon_begin_value 1 \
                 --exploration_epsilon_end_value 0.0001 --num_iterations 501 --num_train_steps 20000 --eval_exploration_epsilon 0 \
                 --num_eval_episods 5 --save_ckpt_iter 100 --max_episode_steps 10000 \
                 --use_fixed_priority_exponent  --fixed_priority_exponent 1 \
                 --use_reward_in_priortized_replay
 
-python3 -m deep_rl_zoo.prioritized_dqn.run_atari --run_name "counter" --environment_name=Seaquest --replay_capacity 100000 \
+python3 -m deep_rl_zoo.prioritized_dqn.run_atari --run_name "counter" --environment_name=Qbert --replay_capacity 100000 \
                 --min_replay_size 10000 --exploration_epsilon_decay_step 10000000 --exploration_epsilon_begin_value 1 \
                 --exploration_epsilon_end_value 0.0001 --num_iterations 501 --num_train_steps 20000 --eval_exploration_epsilon 0 \
                 --num_eval_episods 5 --save_ckpt_iter 100 --max_episode_steps 10000 \
                 --use_fixed_priority_exponent  --fixed_priority_exponent 1 \
                 --use_replay_counter
                 
-python3 -m deep_rl_zoo.prioritized_dqn.run_atari --run_name "Pi" --environment_name=Seaquest --replay_capacity 100000 \
+python3 -m deep_rl_zoo.prioritized_dqn.run_atari --run_name "Pi-softmax" --environment_name=Qbert --replay_capacity 100000 \
                 --min_replay_size 10000 --exploration_epsilon_decay_step 10000000 --exploration_epsilon_begin_value 1 \
                 --exploration_epsilon_end_value 0.0001 --num_iterations 501 --num_train_steps 20000 --eval_exploration_epsilon 0 \
                 --num_eval_episods 5 --save_ckpt_iter 100 --max_episode_steps 10000 \
@@ -120,7 +120,7 @@ flags.DEFINE_string('results_csv_path', './logs/per_dqn_atari_results.csv', 'Pat
 flags.DEFINE_string('checkpoint_dir', './checkpoints', 'Path for checkpoint directory.')
 
 flags.DEFINE_integer('save_ckpt_iter', 1, 'save checkpint evry n iterations')
-flags.DEFINE_string('device', 'cuda:0', 'device to run train model: cpu or cuda')
+flags.DEFINE_string('device', 'cuda:1', 'device to run train model: cpu or cuda')
 flags.DEFINE_integer('num_eval_episods', 5, 'Number of episods in evaluation env to run per iteration.')
 # flags.DEFINE_integer('max_eval_episod_steps', int(1e3), 'max_eval_episod_steps')
 flags.DEFINE_string('run_name', 'v1', 'name of current run')
