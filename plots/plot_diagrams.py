@@ -43,9 +43,9 @@ def get_evaluation_return_data(main_path, run_name, env_name):
         mean_returns.append(mean)
         std_returns.append(std)
     mean_returns, std_returns = np.array(mean_returns), np.array(std_returns)
-    lower_band = smooth(mean_returns-std_returns, 20)
-    upper_band = smooth(mean_returns+std_returns, 20)
-    mean_returns = smooth(mean_returns, 20)
+    lower_band = smooth(mean_returns-std_returns, 10)
+    upper_band = smooth(mean_returns+std_returns, 10)
+    mean_returns = smooth(mean_returns, 10)
     train_steps = np.array(list(eval_returns.keys()))[:len(mean_returns)]
     return {"train_steps": train_steps, "mean_returns": mean_returns, "lower_band": lower_band, "upper_band": upper_band, \
             "title": run_name}
@@ -109,7 +109,8 @@ def main():
     main_path = "final_plots"
     # env_name = "Seaquest"
     # env_name = "Breakout"
-    env_name = "Tennis"
+    # env_name = "Tennis"
+    env_name = "Qbert"
     run_names = [
                 ("DQN", ""), ("PER-DQN-alpha0.6", ""),
                 ("PER-DQN-exponent-counter", ""), ("PER-DQN-exponent-reward", ""), ("PER-DQN-exponent-Pi-proportional", ""), ("PER-DQN-exponent-Pi-softmax", "")
